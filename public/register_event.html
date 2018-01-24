@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>클립소프트 방문지원 일정 등록</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script type="text/javascript">
+        var domain = 'http://' + window.location.host;
+        $(document).ready(function () {
+            $('#home').attr('href', domain + '/main.html');
+
+            $('input[type=date]').val(new Date().toISOString().substr(0, 10));
+
+
+            $.ajax({url: domain + '/rest/api/get/members'}).then(function (data) {
+                if (data.result == "fail") {
+                    alert(data.message);
+                    return;
+                }
+                var members = data.records;
+                for (i = 0; i < members.length; ++i) {
+                    var member = members[i];
+                    $('#name').append($('<option>', {value: member.name, text: member.name + '(' + member.team + ')'}));
+                    //$('<option value = " + member.name +">'  + member.name + '(' + member.team+ ')</option>').appendTo($('#name'));
+                }
+            });
+
+            $("#button-register").click(function () {
+                var record = {};
+                var fields = ["name", "project", "project-contact-name", "project-contact-phone", "product", "region",
+                    "transport", "period", "start-date", "start-time", "end-date", "end-time", "purpose",
+                    "purpose-detail"];
+                for (i in fields) {
+                    var name = fields[i];
+                    record[name] = $("#" + name).val();
+                }
+                if (record["name"] === "") {
+                    alert("이름은 필수 항목입니다.");
+                    return;
+                }
+                $.post(domain + '/rest/api/register/event', record, function (data) {
+                    if (data.result === "ok") {
+                        // $(location).attr('href', domain + '/task_assign.html');
+                        alert("success!!");
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <!-- https://www.iconfinder.com/icons/197589/circular_home_index_main_mainpage_modern_red_icon#size=128 -->
+        <a id="home"><img src="./images/home512x512.png" width="100" width="100"></a>
+        <h3>클립소프트 방문지원 일정 등록</h3>
+    </div>
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label>이름(필수)</label>
+                <div>
+                    <select class="form-control" id="name">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>프로젝트명</label>
+                <input type="text" class="form-control" id="project" placeholder="프로젝트명을 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label>프로젝트 담당자 이름</label>
+                <input type="text" class="form-control" id="project-contact-name" placeholder="프로젝트 담당자 이름을 입력해주세요">
+            </div>
+
+            <div class="form-group">
+                <label>프로젝트 담당자 연락처</label>
+                <input type="text" class="form-control" id="project-contact-phone" placeholder="010-123-1234">
+            </div>
+
+            <div class="form-group">
+                <label>지원 제품</label>
+                <select class="form-control" id="product">
+                    <option>렉스퍼트 2.0</option>
+                    <option>렉스퍼트 2.5</option>
+                    <option>렉스퍼트 3.0</option>
+                    <option selected>클립리포트 4.0</option>
+                    <option>웹이폼</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>방문 지역</label>
+                <select class="form-control" id="region">
+                    <option selected>서울특별시</option>
+                    <option>부산광역시</option>
+                    <option>인찬광역시</option>
+                    <option>대구광역시</option>
+                    <option>대전광역시</option>
+                    <option>광주광역시</option>
+                    <option>울산광역시</option>
+                    <option>세종특별자치시</option>
+                    <option>강원도</option>
+                    <option>경기도</option>
+                    <option>충청북도</option>
+                    <option>충청남도</option>
+                    <option>경상북도</option>
+                    <option>경상남도</option>
+                    <option>전라북도</option>
+                    <option>전라남도</option>
+                    <option>제주특별자치도</option>
+                    <option>해외</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>주요 이동 수단</label>
+                <select class="form-control" id="transport">
+                    <option>도보</option>
+                    <option>자전거</option>
+                    <option selected>지하철</option>
+                    <option>자동차</option>
+                    <option>시내버스</option>
+                    <option>시외버스</option>
+                    <option>기차</option>
+                    <option>비행기</option>
+                    <option>배</option>
+                    <option>우주선</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>지원 일정</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <select class="form-control" id="period">
+                            <option selected>하루종일</option>
+                            <option>오전종일</option>
+                            <option>오후종일</option>
+                            <option>시간선택</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control" id="start-date" placeholder="2017-08-09">
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="start-time">
+                            <option selected>00:00</option>
+                            <option>00:30</option>
+                            <option>01:00</option>
+                            <option>01:30</option>
+                            <option>02:00</option>
+                            <option>03:00</option>
+                            <option>03:30</option>
+                            <option>04:00</option>
+                            <option>04:30</option>
+                            <option>05:00</option>
+                            <option>05:30</option>
+                            <option>06:00</option>
+                            <option>06:30</option>
+                            <option>07:00</option>
+                            <option>07:30</option>
+                            <option>08:00</option>
+                            <option>08:30</option>
+                            <option>09:00</option>
+                            <option>09:30</option>
+                            <option>10:00</option>
+                            <option>10:30</option>
+                            <option>11:00</option>
+                            <option>11:30</option>
+                            <option>12:00</option>
+                            <option>12:30</option>
+                            <option>13:00</option>
+                            <option>13:30</option>
+                            <option>14:00</option>
+                            <option>14:30</option>
+                            <option>15:00</option>
+                            <option>15:30</option>
+                            <option>16:00</option>
+                            <option>16:30</option>
+                            <option>17:00</option>
+                            <option>17:30</option>
+                            <option>18:00</option>
+                            <option>18:30</option>
+                            <option>19:00</option>
+                            <option>19:30</option>
+                            <option>20:00</option>
+                            <option>20:30</option>
+                            <option>21:00</option>
+                            <option>21:30</option>
+                            <option>22:00</option>
+                            <option>22:30</option>
+                            <option>23:00</option>
+                            <option>23:30</option>
+                            <option>24:00</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control col-sm-2" id="end-date" placeholder="2017-12-25">
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="date-time">
+                            <option selected>00:00</option>
+                            <option>00:30</option>
+                            <option>01:00</option>
+                            <option>01:30</option>
+                            <option>02:00</option>
+                            <option>03:00</option>
+                            <option>03:30</option>
+                            <option>04:00</option>
+                            <option>04:30</option>
+                            <option>05:00</option>
+                            <option>05:30</option>
+                            <option>06:00</option>
+                            <option>06:30</option>
+                            <option>07:00</option>
+                            <option>07:30</option>
+                            <option>08:00</option>
+                            <option>08:30</option>
+                            <option>09:00</option>
+                            <option>09:30</option>
+                            <option>10:00</option>
+                            <option>10:30</option>
+                            <option>11:00</option>
+                            <option>11:30</option>
+                            <option>12:00</option>
+                            <option>12:30</option>
+                            <option>13:00</option>
+                            <option>13:30</option>
+                            <option>14:00</option>
+                            <option>14:30</option>
+                            <option>15:00</option>
+                            <option>15:30</option>
+                            <option>16:00</option>
+                            <option>16:30</option>
+                            <option>17:00</option>
+                            <option>17:30</option>
+                            <option>18:00</option>
+                            <option>18:30</option>
+                            <option>19:00</option>
+                            <option>19:30</option>
+                            <option>20:00</option>
+                            <option>20:30</option>
+                            <option>21:00</option>
+                            <option>21:30</option>
+                            <option>22:00</option>
+                            <option>22:30</option>
+                            <option>23:00</option>
+                            <option>23:30</option>
+                            <option>24:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>방문 목적</label>
+                <select class="form-control" id="purpose">
+                    <option selected>설치</option>
+                    <option>교육</option>
+                    <option>업무협의</option>
+                    <option>기술지원</option>
+                    <option>리포트개발 지원</option>
+                    <option>이폼개발 지원</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>상세</label>
+                <textarea class="form-control" id="purpose-detail" rows="4"
+                          placeholder="방문 목적을 정확히 작성해주면 도움됩니다."></textarea>
+            </div>
+            <button type="button" id="button-register" class="btn btn-primary">등록</button>
+        </form>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

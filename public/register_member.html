@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>클립소프트 방문지원 일정 등록</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script type="text/javascript">
+        var domain = 'http://' + window.location.host;
+        $(document).ready(function () {
+            $('#home').attr('href', domain + '/main.html');
+
+/*
+            $("#button-register").click(function () {
+                var members = [
+                    { "name" : "김양수", "email" : "ys.kim@clipsoft.co.kr", "position" : "사장", "team" : "사업부"},
+                    { "name" : "김기홍", "email" : "kkhong@clipsoft.co.kr", "position" : "부사장", "team" : "경영지원"},
+                    { "name" : "남도현", "email" : "dhnam@clipsoft.co.kr", "position" : "상무", "team" : "연구소"},
+                    { "name" : "손현성", "email" : "hsson@clipsoft.co.kr", "position" : "이사", "team" : "기술부"},
+                    { "name" : "김대훈", "email" : "kdyu04@clipsoft.co.kr", "position" : "부장", "team" : "사업부"},
+                    { "name" : "박정현", "email" : "pjh@clipsoft.co.kr", "position" : "부장", "team" : "사업4팀"},
+                    { "name" : "성봉주", "email" : "bjsung@clipsoft.co.kr", "position" : "부장", "team" : "사업3팀"},
+                    { "name" : "전승우", "email" : "jsw@clipsoft.co.kr", "position" : "부장", "team" : "연구소1팀"},
+                    { "name" : "진선엽", "email" : "jin8483@clipsoft.co.kr", "position" : "부장", "team" : "컨설팅팀"},
+                    { "name" : "한창진", "email" : "cjhan@clipsoft.co.kr", "position" : "부장", "team" : "기술부1팀"},
+                    { "name" : "홍지철", "email" : "jchong@clipsoft.co.kr", "position" : "부장", "team" : "연구소2팀"},
+                    { "name" : "김숙정", "email" : "suk@clipsoft.co.kr", "position" : "차장", "team" : "기술부3팀"},
+                    { "name" : "송경오", "email" : "kosong@clipsoft.co.kr", "position" : "차장", "team" : "프리세일즈팀"},
+                    { "name" : "정경오", "email" : "skelro9@clipsoft.co.kr", "position" : "과장", "team" : "기술부2팀"},
+                    { "name" : "박성균", "email" : "neolord@clipsoft.co.kr", "position" : "부장", "team" : "연구소3팀"},
+                    { "name" : "유병창", "email" : "ryubc@clipsoft.co.kr", "position" : "부장", "team" : "연구소3팀"},
+                    { "name" : "이창훈", "email" : "chlee@clipsoft.co.kr", "position" : "부장", "team" : "컨설팅팀"},
+                    { "name" : "이현일", "email" : "lhi0828@clipsoft.co.kr", "position" : "부장", "team" : "연구소3팀"},
+                    { "name" : "장순우", "email" : "swjang@clipsoft.co.kr", "position" : "부장", "team" : "사업1팀"},
+                    { "name" : "강성웅", "email" : "glory46@clipsoft.co.kr", "position" : "차장", "team" : "컨설팅팀"},
+                    { "name" : "신현화", "email" : "hhshin@clipsoft.co.kr", "position" : "차장", "team" : "컨설팅팀"},
+                    { "name" : "조성철", "email" : "sccho@clipsoft.co.kr", "position" : "차장", "team" : "컨설팅팀"},
+                    { "name" : "주건", "email"  : "jugun@clipsoft.co.kr", "position" : "차장", "team" : "연구소1팀"},
+                    { "name" : "권영석", "email" : "akdlsem0@clipsoft.co.kr", "position" : "과장", "team" : "연구소2팀"},
+                    { "name" : "김우겸", "email" : "kyk234@clipsoft.co.kr", "position" : "과장", "team" : "연구소1팀"},
+                    { "name" : "김종훈", "email" : "kjh@clipsoft.co.kr", "position" : "과장", "team" : "사업1팀"},
+                    { "name" : "성해용", "email" : "hysung@clipsoft.co.kr", "position" : "과장", "team" : "사업1팀"},
+                    { "name" : "손진", "email"  : "sj0807@clipsoft.co.kr", "position" : "과장", "team" : "기술부1팀"},
+                    { "name" : "손현선", "email" : "sunny@clipsoft.co.kr", "position" : "과장", "team" : "경영지원"},
+                    { "name" : "이래석", "email" : "irae@clipsoft.co.kr", "position" : "과장", "team" : "연구소1팀"},
+                    { "name" : "이수호", "email" : "maketool@clipsoft.co.kr", "position" : "과장", "team" : "연구소2팀"},
+                    { "name" : "이영우", "email" : "tablo@clipsoft.co.kr", "position" : "과장", "team" : "연구소2팀"},
+                    { "name" : "이응호", "email" : "ehlee@clipsoft.co.kr", "position" : "과장", "team" : "연구소1팀"},
+                    { "name" : "정상우", "email" : "tjgus0331@clipsoft.co.kr", "position" : "과장", "team" : "사업부"},
+                    { "name" : "조연욱", "email" : "joyw@clipsoft.co.kr", "position" : "과장", "team" : "프리세일즈팀"},
+                    { "name" : "조지훈", "email" : "jihun@clipsoft.co.kr", "position" : "과장", "team" : "연구소1팀"},
+                    { "name" : "조한나", "email" : "chohanna@clipsoft.co.kr", "position" : "과장", "team" : "연구소2팀"},
+                    { "name" : "황일기", "email" : "higq@clipsoft.co.kr", "position" : "과장", "team" : "연구소1팀"},
+                    { "name" : "김기호", "email" : "onsugo@clipsoft.co.kr", "position" : "대리", "team" : "기술부2팀"},
+                    { "name" : "김민주", "email" : "kmj@clipsoft.co.kr", "position" : "대리", "team" : "컨설팅팀"},
+                    { "name" : "김윤기", "email" : "kimyk@clipsoft.co.kr", "position" : "대리", "team" : "컨설팅팀"},
+                    { "name" : "박소윤", "email" : "psy0820@clipsoft.co.kr", "position" : "대리", "team" : "프리세일즈팀"},
+                    { "name" : "신종진", "email" : "lshuria@clipsoft.co.kr", "position" : "대리", "team" : "기술부3팀"},
+                    { "name" : "유달재", "email" : "djyou@clipsoft.co.kr", "position" : "대리", "team" : "사업1팀"},
+                    { "name" : "유운용", "email" : "ryuwy@clipsoft.co.kr", "position" : "대리", "team" : "기술부2팀"},
+                    { "name" : "이창섭", "email" : "cs@clipsoft.co.kr", "position" : "대리", "team" : "기술부1팀"},
+                    { "name" : "홍성범", "email" : "ice3x2@clipsoft.co.kr", "position" : "대리", "team" : "연구소1팀"},
+                    { "name" : "박병국", "email" : "pakbg90@clipsoft.co.kr", "position" : "주임", "team" : "컨설팅팀"},
+                    { "name" : "양경규", "email" : "lacris@clipsoft.co.kr", "position" : "주임", "team" : "사업부"},
+                    { "name" : "이경주", "email" : "lkj91@clipsoft.co.kr", "position" : "주임", "team" : "연구소1팀"},
+                    { "name" : "이기환", "email" : "3767sky@clipsoft.co.kr", "position" : "주임", "team" : "기술부1팀"},
+                    { "name" : "이바우", "email" : "soultomind@clipsoft.co.kr", "position" : "주임", "team" : "연구소1팀"},
+                    { "name" : "장주홍", "email" : "jjh1302@clipsoft.co.kr", "position" : "주임", "team" : "연구소1팀"},
+                    { "name" : "전대영", "email" : "dyjeon@clipsoft.co.kr", "position" : "주임", "team" : "사업1팀"},
+                    { "name" : "황민재", "email" : "hmj@clipsoft.co.kr", "position" : "주임", "team" : "프리세일즈팀"},
+                    { "name" : "김동현", "email" : "kdh19911031@clipsoft.co.kr", "position" : "사원", "team" : "컨설팅팀"},
+                    { "name" : "김장훈", "email" : "rnlauf@clipsoft.co.kr", "position" : "사원", "team" : "연구소1팀",},
+                    { "name" : "김진현", "email" : "hope90@clipsoft.co.kr", "position" : "사원", "team" : "기술부2팀"},
+                    { "name" : "김현수", "email" : "khs5786@clipsoft.co.kr", "position" : "사원", "team" : "기술부2팀"},
+                    { "name" : "박소희", "email" : "psh98@clipsoft.co.kr", "position" : "사원", "team" : "기술부3팀"},
+                    { "name" : "어다슬", "email" : "uhds@clipsoft.co.kr", "position" : "사원", "team" : "연구소2팀"},
+                    { "name" : "왕도진", "email" : "dojin@clipsoft.co.kr", "position" : "사원", "team" : "기술부1팀"},
+                    { "name" : "이민섭", "email" : "kkllee1205@clipsoft.co.kr", "position" : "사원", "team" : "기술부1팀"},
+                    { "name" : "이주은", "email" : "jelee@clipsoft.co.kr", "position" : "사원", "team" : "사업1팀"},
+                    { "name" : "전훈", "email"  : "jh616@clipsoft.co.kr", "position" : "사원", "team" : "사업1팀"}
+                ];
+
+                for(var i = 0; i < members.length; ++i) {
+                    $.post(domain + '/rest/api/register/member', members[i], function (data) {
+                        if (data.result === "ok") {
+                            // $(location).attr('href', domain + '/task_assign.html');
+                            //alert("success!!");
+                        }
+                    });
+                }
+            });
+
+        });
+        */
+            $("#button-register").click(function () {
+                var members = [
+                    { "name" : "한창진", "email" : "cjhan@clipsoft.co.kr", "position" : "부장", "team" : "기술부1팀"},
+                    { "name" : "김숙정", "email" : "suk@clipsoft.co.kr", "position" : "차장", "team" : "기술부3팀"},
+                    { "name" : "정경오", "email" : "skelro9@clipsoft.co.kr", "position" : "과장", "team" : "기술부2팀"}, ,
+                    { "name" : "손진", "email"  : "sj0807@clipsoft.co.kr", "position" : "과장", "team" : "기술부1팀"},
+                    { "name" : "신종진", "email" : "lshuria@clipsoft.co.kr", "position" : "대리", "team" : "기술부3팀"},
+                    { "name" : "유운용", "email" : "ryuwy@clipsoft.co.kr", "position" : "대리", "team" : "기술부2팀"},
+                    { "name" : "이창섭", "email" : "cs@clipsoft.co.kr", "position" : "대리", "team" : "기술부1팀"},
+                    { "name" : "이기환", "email" : "3767sky@clipsoft.co.kr", "position" : "주임", "team" : "기술부1팀"},
+                    { "name" : "김진현", "email" : "hope90@clipsoft.co.kr", "position" : "사원", "team" : "기술부2팀"},
+                    { "name" : "김현수", "email" : "khs5786@clipsoft.co.kr", "position" : "사원", "team" : "기술부2팀"},
+                    { "name" : "박소희", "email" : "psh98@clipsoft.co.kr", "position" : "사원", "team" : "기술부3팀"},
+                    { "name" : "어다슬", "email" : "uhds@clipsoft.co.kr", "position" : "사원", "team" : "연구소2팀"},
+                    { "name" : "왕도진", "email" : "dojin@clipsoft.co.kr", "position" : "사원", "team" : "기술부1팀"},
+                    { "name" : "이민섭", "email" : "kkllee1205@clipsoft.co.kr", "position" : "사원", "team" : "기술부1팀"},
+                ];
+
+                for(var i = 0; i < members.length; ++i) {
+                    $.post(domain + '/rest/api/register/member', members[i], function (data) {
+                        if (data.result === "ok") {
+                            // $(location).attr('href', domain + '/task_assign.html');
+                            //alert("success!!");
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+<button type="button" id="button-register" class="btn btn-primary">등록</button>
+</body>
+</html>
