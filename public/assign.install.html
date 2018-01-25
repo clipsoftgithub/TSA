@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>기술부 - 설치</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+
+    <style type="text/css">
+
+
+    </style>
+
+    <script type="text/javascript">
+        var domain = 'http://' + window.location.host;
+        function init() {
+
+            // 직원
+            $("<option></option>", {value: "ys.kim@clipsoft.co.kr", text: "김양수"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kkhong@clipsoft.co.kr", text: "김기홍"}).appendTo("[id='members']");
+            $("<option></option>", {value: "dhnam@clipsoft.co.kr", text: "남도현"}).appendTo("[id='members']");
+            $("<option></option>", {value: "hsson@clipsoft.co.kr", text: "손현성"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kdyu04@clipsoft.co.kr", text: "김대훈"}).appendTo("[id='members']");
+            $("<option></option>", {value: "pjh@clipsoft.co.kr", text: "박정현"}).appendTo("[id='members']");
+            $("<option></option>", {value: "bjsung@clipsoft.co.kr", text: "성봉주"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jsw@clipsoft.co.kr", text: "전승우"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jin8483@clipsoft.co.kr", text: "진선엽"}).appendTo("[id='members']");
+            $("<option></option>", {value: "cjhan@clipsoft.co.kr", text: "한창진"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jchong@clipsoft.co.kr", text: "홍지철"}).appendTo("[id='members']");
+            $("<option></option>", {value: "suk@clipsoft.co.kr", text: "김숙정"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kosong@clipsoft.co.kr", text: "송경오"}).appendTo("[id='members']");
+            $("<option></option>", {value: "skelro9@clipsoft.co.kr", text: "정경오"}).appendTo("[id='members']");
+            $("<option></option>", {value: "neolord@clipsoft.co.kr", text: "박성균"}).appendTo("[id='members']");
+            $("<option></option>", {value: "ryubc@clipsoft.co.kr", text: "유병창"}).appendTo("[id='members']");
+            $("<option></option>", {value: "chlee@clipsoft.co.kr", text: "이창훈"}).appendTo("[id='members']");
+            $("<option></option>", {value: "lhi0828@clipsoft.co.kr", text: "이현일"}).appendTo("[id='members']");
+            $("<option></option>", {value: "swjang@clipsoft.co.kr", text: "장순우"}).appendTo("[id='members']");
+            $("<option></option>", {value: "glory46@clipsoft.co.kr", text: "강성웅"}).appendTo("[id='members']");
+            $("<option></option>", {value: "hhshin@clipsoft.co.kr", text: "신현화"}).appendTo("[id='members']");
+            $("<option></option>", {value: "sccho@clipsoft.co.kr", text: "조성철"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jugun@clipsoft.co.kr", text: "주건"}).appendTo("[id='members']");
+            $("<option></option>", {value: "akdlsem0@clipsoft.co.kr", text: "권영석"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kyk234@clipsoft.co.kr", text: "김우겸"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kjh@clipsoft.co.kr", text: "김종훈"}).appendTo("[id='members']");
+            $("<option></option>", {value: "hysung@clipsoft.co.kr", text: "성해용"}).appendTo("[id='members']");
+            $("<option></option>", {value: "sj0807@clipsoft.co.kr", text: "손진"}).appendTo("[id='members']");
+            $("<option></option>", {value: "sunny@clipsoft.co.kr", text: "손현선"}).appendTo("[id='members']");
+            $("<option></option>", {value: "irae@clipsoft.co.kr", text: "이래석"}).appendTo("[id='members']");
+            $("<option></option>", {value: "maketool@clipsoft.co.kr", text: "이수호"}).appendTo("[id='members']");
+            $("<option></option>", {value: "tablo@clipsoft.co.kr", text: "이영우"}).appendTo("[id='members']");
+            $("<option></option>", {value: "ehlee@clipsoft.co.kr", text: "이응호"}).appendTo("[id='members']");
+            $("<option></option>", {value: "tjgus0331@clipsoft.co.kr", text: "정상우"}).appendTo("[id='members']");
+            $("<option></option>", {value: "joyw@clipsoft.co.kr", text: "조연욱"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jihun@clipsoft.co.kr", text: "조지훈"}).appendTo("[id='members']");
+            $("<option></option>", {value: "chohanna@clipsoft.co.kr", text: "조한나"}).appendTo("[id='members']");
+            $("<option></option>", {value: "higq@clipsoft.co.kr", text: "황일기"}).appendTo("[id='members']");
+            $("<option></option>", {value: "onsugo@clipsoft.co.kr", text: "김기호"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kmj@clipsoft.co.kr", text: "김민주"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kimyk@clipsoft.co.kr", text: "김윤기"}).appendTo("[id='members']");
+            $("<option></option>", {value: "psy0820@clipsoft.co.kr", text: "박소윤"}).appendTo("[id='members']");
+            $("<option></option>", {value: "lshuria@clipsoft.co.kr", text: "신종진"}).appendTo("[id='members']");
+            $("<option></option>", {value: "djyou@clipsoft.co.kr", text: "유달재"}).appendTo("[id='members']");
+            $("<option></option>", {value: "ryuwy@clipsoft.co.kr", text: "유운용"}).appendTo("[id='members']");
+            $("<option></option>", {value: "cs@clipsoft.co.kr", text: "이창섭"}).appendTo("[id='members']");
+            $("<option></option>", {value: "ice3x2@clipsoft.co.kr", text: "홍성범"}).appendTo("[id='members']");
+            $("<option></option>", {value: "pakbg90@clipsoft.co.kr", text: "박병국"}).appendTo("[id='members']");
+            $("<option></option>", {value: "lacris@clipsoft.co.kr", text: "양경규"}).appendTo("[id='members']");
+            $("<option></option>", {value: "lkj91@clipsoft.co.kr", text: "이경주"}).appendTo("[id='members']");
+            $("<option></option>", {value: "3767sky@clipsoft.co.kr", text: "이기환"}).appendTo("[id='members']");
+            $("<option></option>", {value: "soultomind@clipsoft.co.kr", text: "이바우"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jjh1302@clipsoft.co.kr", text: "장주홍"}).appendTo("[id='members']");
+            $("<option></option>", {value: "dyjeon@clipsoft.co.kr", text: "전대영"}).appendTo("[id='members']");
+            $("<option></option>", {value: "hmj@clipsoft.co.kr", text: "황민재"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kdh19911031@clipsoft.co.kr", text: "김동현"}).appendTo("[id='members']");
+            $("<option></option>", {value: "rnlauf@clipsoft.co.kr", text: "김장훈"}).appendTo("[id='members']");
+            $("<option></option>", {value: "hope90@clipsoft.co.kr", text: "김진현"}).appendTo("[id='members']");
+            $("<option></option>", {value: "khs5786@clipsoft.co.kr", text: "김현수"}).appendTo("[id='members']");
+            $("<option></option>", {value: "psh98@clipsoft.co.kr", text: "박소희"}).appendTo("[id='members']");
+            $("<option></option>", {value: "uhds@clipsoft.co.kr", text: "어다슬"}).appendTo("[id='members']");
+            $("<option></option>", {value: "dojin@clipsoft.co.kr", text: "왕도진"}).appendTo("[id='members']");
+            $("<option></option>", {value: "kkllee1205@clipsoft.co.kr", text: "이민섭"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jelee@clipsoft.co.kr", text: "이주은"}).appendTo("[id='members']");
+            $("<option></option>", {value: "jh616@clipsoft.co.kr", text: "전훈"}).appendTo("[id='members']");
+
+
+            // 제품
+            $("<option></option>", {value: "렉스퍼트 2.0", text: "렉스퍼트 2.0"}).appendTo("[id='product']");
+            $("<option></option>", {value: "렉스퍼트 2.5", text: "렉스퍼트 2.5"}).appendTo("[id='product']");
+            $("<option></option>", {value: "렉스퍼트 3.0", text: "렉스퍼트 3.0"}).appendTo("[id='product']");
+            $("<option></option>", {value: "클립리포트 4.0", text: "클립리포트 4.0"}).appendTo("[id='product']");
+            $("<option></option>", {value: "클립리포트 4.0 데몬", text: "클립리포트 4.0 데몬"}).appendTo("[id='product']");
+            $("<option></option>", {value: "웹이폼", text: "웹이폼"}).appendTo("[id='product']");
+
+            // 지역
+            $("<option></option>", {value: "서울특별시", text: "서울특별시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "부산광역시", text: "부산광역시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "인찬광역시", text: "인찬광역시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "대구광역시", text: "대구광역시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "대전광역시", text: "대전광역시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "광주광역시", text: "광주광역시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "울산광역시", text: "울산광역시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "세종특별자치시", text: "세종특별자치시"}).appendTo("[id='region']");
+            $("<option></option>", {value: "강원도", text: "강원도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "경기도", text: "경기도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "충청북도", text: "충청북도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "충청남도", text: "충청남도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "경상북도", text: "경상북도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "경상남도", text: "경상남도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "전라북도", text: "전라북도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "전라남도", text: "전라남도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "제주특별자치도", text: "제주특별자치도"}).appendTo("[id='region']");
+            $("<option></option>", {value: "해외", text: "해외"}).appendTo("[id='region']");
+            $("<option></option>", {value: "안드로메다", text: "안드로메다"}).appendTo("[id='region']");
+
+            // 교통
+            $("<option></option>", {value: "도보", text: "도보"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "자전거", text: "자전거"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "지하철", text: "지하철"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "자동차", text: "자동차"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "시내버스", text: "시내버스"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "시외버스", text: "시외버스"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "기차", text: "기차"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "비행기", text: "비행기"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "배", text: "배"}).appendTo("[id='transport']");
+            $("<option></option>", {value: "우주선", text: "우주선"}).appendTo("[id='transport']");
+
+            // 시
+            $("<option></option>", {value: "00:00", text: "00:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "00:30", text: "00:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "01:00", text: "01:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "01:30", text: "01:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "02:00", text: "02:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "03:00", text: "03:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "03:30", text: "03:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "04:00", text: "04:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "04:30", text: "04:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "05:00", text: "05:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "05:30", text: "05:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "06:00", text: "06:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "06:30", text: "06:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "07:00", text: "07:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "07:30", text: "07:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "08:00", text: "08:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "08:30", text: "08:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "09:00", text: "09:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "09:30", text: "09:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "10:00", text: "10:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "10:30", text: "10:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "11:00", text: "11:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "11:30", text: "11:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "12:00", text: "12:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "12:30", text: "12:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "13:00", text: "13:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "13:30", text: "13:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "14:00", text: "14:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "14:30", text: "14:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "15:00", text: "15:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "15:30", text: "15:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "16:00", text: "16:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "16:30", text: "16:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "17:00", text: "17:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "17:30", text: "17:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "18:00", text: "18:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "18:30", text: "18:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "19:00", text: "19:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "19:30", text: "19:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "20:00", text: "20:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "20:30", text: "20:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "21:00", text: "21:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "21:30", text: "21:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "22:00", text: "22:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "22:30", text: "22:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "23:00", text: "23:00"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "23:30", text: "23:30"}).appendTo("#start-time, #end-time");
+            $("<option></option>", {value: "24:00", text: "24:00"}).appendTo("#start-time, #end-time");
+
+        }
+
+        $(document).ready(function () {
+            init();
+            $("[id='members']").select2({width: '100%'});
+
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Technical Support Team</h2>
+        <p>Technical support may be delivered by the different technologies depending on the situation. For example,
+            direct questions can be addressed using telephone calls, SMS, Online chat, Support Forums, E-mail or Fax;
+            basic software problems can be addressed over the telephone or, increasingly, by using remote access repair
+            services; while more complicated problems with hardware may need to be dealt with in person</p>
+    </div>
+    <div class="page-header">
+        <a id="home">등록</a>
+        <a id="search">검색</a>
+        <a id="statistics">통계</a>
+    </div>
+    <!-- 티켓 정보 -->
+    <div class="row">
+        <div class="col-xs-2 col-md-1">
+            <img src="./images/유병창.jpeg" class="img-circle img-responsive" alt="" />
+        </div>
+        <div class="col-xs-10 col-md-11">
+            <div>
+                <b><a href="#">삼성화재 고도화사업</a></b> 프로젝트 <a><b>[설치]</b></a> 부탁드립니다.
+                <div class="mic-info">
+                    By: <a href="#">유병창</a> on 2018-01-25T05:35:48.006Z
+                </div>
+            </div>
+            <div class="comment-text">디자이너에 있는 DB연결은 디자이너용이고 웹에서는 properties 파일에 선언한 DB정보를 읽어온다고 안내함</div>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#install">설치</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!--  설치 -->
+            <div id="install" class="tab-pane fade in active">
+                <div class="row">
+                    <form>
+                        <div class="form-group">
+                            <label>설치 담당자(필수)</label>
+                            <select class="form-control" id="members">
+                            </select>
+                            <small class="form-text text-muted">* 제품 설치를 하는 기술부 직원을 선택합니다.</small>
+                        </div>
+                        <div class="form-group">
+                            <label>수행 인원</label>
+                            <select class="form-control" multiple="multiple" id="members">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>수행 일자</label>
+                            <input type="date" class="form-control" id="start-date" placeholder="2017-08-09">
+                        </div>
+                        <button type="button" id="button-register" class="btn btn-primary">등록</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

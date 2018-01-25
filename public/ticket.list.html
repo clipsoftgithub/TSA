@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>기술지원팀</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+
+    <style type="text/css">
+
+
+
+    </style>
+
+    <script id="ticket-template" type="text/x-handlebars-template">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-2 col-md-1">
+                    <img src="./images/{{publisher.name}}.jpeg" class="img-circle img-responsive" alt="" /></div>
+                <div class="col-xs-10 col-md-11">
+                    <div>
+                        <b><a href="#">{{project.name}}</a></b> 프로젝트 <a><b>[{{type}}]</b></a> 부탁드립니다.
+                        <div class="mic-info">
+                            By: <a href="#">{{publisher.name}}</a> on {{issuedate}}
+                        </div>
+                    </div>
+                    <div class="comment-text">{{message}}</div>
+                    <div class="action">
+                        <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+
+    <script type="text/javascript">
+        var domain = 'http://' + window.location.host;
+        function init() {
+        }
+
+        function template(id, task) {
+            var s = $(id).html();
+            var t = Handlebars.compile(s);
+            return $(t(task));
+        }
+
+        $(document).ready(function () {
+            init();
+            var ticket = function(state) {
+                var query = {};
+                query.state = state;
+                $.get(domain + '/rest/api/ticket', query).then(function (result) {
+                    if (result.result === "ok") {
+                        var tickets = result.records;
+                        for(var i = 0; i < tickets.length; i++) {
+                            template("#ticket-template", tickets[i]).appendTo('#ticket-list-' + state).show();
+                        }
+                    }
+                });
+            }
+
+            ticket('open');
+            ticket('ongoing');
+            ticket('close');
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Technical Support Team</h2>
+        <p>Technical support may be delivered by the different technologies depending on the situation. For example,
+            direct questions can be addressed using telephone calls, SMS, Online chat, Support Forums, E-mail or Fax;
+            basic software problems can be addressed over the telephone or, increasingly, by using remote access repair
+            services; while more complicated problems with hardware may need to be dealt with in person</p>
+    </div>
+    <div class="page-header">
+        <a id="home">등록</a>
+        <a id="search">검색</a>
+        <a id="statistics">통계</a>
+        <h3>기술부 티켓 목록</h3>
+    </div>
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#open-ticket">열린 티켓</a></li>
+            <li><a data-toggle="tab" href="#onging-ticket">진행 티켓</a></li>
+            <li><a data-toggle="tab" href="#close-ticket">닫힌 티켓</a></li>
+        </ul>
+        <div class="tab-content">
+            <!-- 열린 티켓  -->
+            <div id="open-ticket" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="panel-body">
+                            <ul class="list-group" id="ticket-list-open">
+                            </ul>
+                            <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 진행 티켓  -->
+            <div id="onging-ticket" class="tab-pane fade">
+                <div class="row">
+                    <div class="panel-body">
+                        <ul class="list-group" id="ticket-list-ongoing">
+                        </ul>
+                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 닫힌 티켓  -->
+            <div id="close-ticket" class="tab-pane fade">
+                <div class="row">
+                    <div class="panel-body">
+                        <ul class="list-group" id="ticket-list-close">
+                        </ul>
+                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -3,6 +3,47 @@ var db = require('../db');
 var router = express.Router();
 var ObjectID = require('mongodb').ObjectID;
 
+
+router.get('/api/ticket', function (req, res, next) {
+    var query = req.query;
+    console.log('ticket -> ' + JSON.stringify(query));
+
+    var result = {};
+    db.get().collection('tickets').find(query).toArray(function (err, records) {
+        if (err) {
+            console.error(err);
+            return;
+        } else {
+            result.result = "ok";
+            result.records = records;
+            res.json(result);
+        }
+    });
+});
+
+
+router.post('/api/ticket', function (req, res, next) {
+    var ticket = req.body;
+    var result = {};
+    if (ticket == undefined ) {
+        result.result = "fail";
+        result.message = "tickt is null";
+    } else {
+        ticket.state = "open";
+        ticket.issuedate = new Date().toISOString();
+        result.result = "ok";
+        db.get().collection('tickets').insert(ticket, function(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            result.id = ticket._id;
+            res.json(result);
+        });
+    }
+});
+
+
 router.post('/api/register/event', function (req, res, next) {
     var record = req.body;
     var result = {};
