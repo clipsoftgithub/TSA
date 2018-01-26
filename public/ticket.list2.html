@@ -14,38 +14,131 @@
 
     <style type="text/css">
 
+        .ticket-section {
+            border-radius: 5px;
+            border-style : solid;
+            border-width : 1px;
+            border-color: #5BC0DE;
+            margin : 5px;
+            padding : 5px;
+            background-color: rgba(91, 192, 222, 0.1);
+            overflow: auto;
+        }
 
+        .task-section {
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px;
+            border-style : solid;
+            border-width : 1px;
+            border-color: #D9534F;
+            background-color: rgba(217, 83, 79, 0.1);
+            overflow: auto;
 
+        }
+
+        .btn { /* just for this demo. */
+            margin-top: 5px;
+        }
+        .btn-arrow-right,
+        .btn-arrow-left {
+            position: relative;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+        .btn-arrow-right {
+            padding-left: 36px;
+        }
+        .btn-arrow-left {
+            padding-right: 36px;
+        }
+        .btn-arrow-right:before,
+        .btn-arrow-right:after,
+        .btn-arrow-left:before,
+        .btn-arrow-left:after { /* make two squares (before and after), looking similar to the button */
+            content:"";
+            position: absolute;
+            top: 5px; /* move it down because of rounded corners */
+            width: 22px; /* same as height */
+            height: 22px; /* button_outer_height / sqrt(2) */
+            background: inherit; /* use parent background */
+            border: inherit; /* use parent border */
+            border-left-color: transparent; /* hide left border */
+            border-bottom-color: transparent; /* hide bottom border */
+            border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+            -webkit-border-radius: 0px 4px 0px 0px;
+            -moz-border-radius: 0px 4px 0px 0px;
+        }
+        .btn-arrow-right:before,
+        .btn-arrow-right:after {
+            transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+        }
+        .btn-arrow-left:before,
+        .btn-arrow-left:after {
+            transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+            -webkit-transform: rotate(225deg);
+            -moz-transform: rotate(225deg);
+            -o-transform: rotate(225deg);
+            -ms-transform: rotate(225deg);
+        }
+        .btn-arrow-right:before,
+        .btn-arrow-left:before { /* align the "before" square to the left */
+            left: -11px;
+        }
+        .btn-arrow-right:after,
+        .btn-arrow-left:after { /* align the "after" square to the right */
+            right: -11px;
+        }
+        .btn-arrow-right:after,
+        .btn-arrow-left:before { /* bring arrow pointers to front */
+            z-index: 1;
+        }
+        .btn-arrow-right:before,
+        .btn-arrow-left:after { /* hide arrow tails background */
+            background-color: white;
+        }
+        }
     </style>
 
     <script id="ticket-template" type="text/x-handlebars-template">
-        <li class="list-group-item" list-type = 'ticket' ticket-type="{{type.id}}">
+        <li class="list-group-item" list-type = 'ticket' tickt-id = '{{_id}}' ticket-type="{{type.id}}">
             <div class="row">
-                <div class="col-xs-2 col-md-1">
-                    <img src="./images/{{publisher.name}}.jpeg" class="img-circle img-responsive" alt="" />
-                </div>
-                <div class="col-xs-7 col-md-9">
-                    <div>
-                        <b><a href="#">{{project.name}}</a></b> 프로젝트 <a><b>[{{type.name}}]</b></a> 부탁드립니다.
-                        <div class="mic-info">
-                            By: <a href="#">{{publisher.name}}</a> on <span class="badge">{{issuedate}}</span>
+                <!-- 티켓 -->
+                <div class="col-md-5 ticket-section">
+                    <div class="col-xs-2 col-md-2">
+                        <img src="./images/{{publisher.name}}.jpeg" class="img-circle img-responsive" alt="" />
+                    </div>
+                    <div class="col-xs-10 col-md-10">
+                        <div>
+                            <b><a href="#">{{project.name}}</a></b> 프로젝트 <a><b>[{{type.name}}]</b></a> 부탁드립니다.
+                            <div class="mic-info">
+                                By: <a href="#">{{publisher.name}}</a> on <span class="badge">{{issuedate}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="comment-text">{{message}}</div>
-                    <div class="action">
-                        <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
+                        <div class="comment-text">{{message}}</div>
                     </div>
                 </div>
-                <div class="col-xs-2 col-md-1">
-                    <button type="button" class="btn btn-primary" id="button-assign-task" ticket-id = '{{_id}}'>작업 할당</button>
+                <div class="col-md-2">
+                    <button class="btn btn-danger btn-arrow-right"> process </button>
                 </div>
-                <div class="col-xs-1 col-md-1">
-
+                <!-- 작업 -->
+                <div class="col-md-4 task-section">
+                    <div class="col-xs-2 col-md-2">
+                        <img src="./images/{{publisher.name}}.jpeg" class="img-circle img-responsive" alt="" />
+                    </div>
+                    <div class="col-xs-10 col-md-10">
+                        <div>
+                            <b><a href="#">{{project.name}}</a></b> 프로젝트 <a><b>[{{type.name}}]</b></a> 부탁드립니다.
+                            <div class="mic-info">
+                                By: <a href="#">{{publisher.name}}</a> on <span class="badge">{{issuedate}}</span>
+                            </div>
+                        </div>
+                        <div class="comment-text">{{message}}</div>
+                    </div>
                 </div>
             </div>
         </li>
@@ -62,6 +155,7 @@
                 if ($target != 'all') {
                     $('li[ticket-type = "' + $target + '"][list-type="ticket"]').css('display', 'block');
                     $('li[ticket-type !="' + $target + '"][list-type="ticket"]').css('display', 'none');
+                    //$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
                 } else {
                     $('li').css('display', 'block').fadeIn('slow');
                 }
@@ -98,10 +192,6 @@
                             var ticket = tickets[i];
                             ticket.issuedate = formatDate(ticket.issuedate);
                             template("#ticket-template", ticket).appendTo('#ticket-list-' + state).show();
-                            $('[id="button-assign-task"]').click(function(){
-                                id = $(this).attr("ticket-id");
-                                $(location).attr('href', domain + '/assign.task?id=' + id);
-                            });
                         }
                     }
                 });
@@ -110,8 +200,6 @@
             ticket('open');
             ticket('ongoing');
             ticket('close');
-
-
         });
     </script>
 

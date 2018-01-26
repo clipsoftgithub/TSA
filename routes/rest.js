@@ -3,11 +3,11 @@ var db = require('../db');
 var router = express.Router();
 var ObjectID = require('mongodb').ObjectID;
 
-
+//
+// 티켓
+//
 router.get('/api/ticket', function (req, res, next) {
     var query = req.query;
-    console.log('ticket -> ' + JSON.stringify(query));
-
     var result = {};
     db.get().collection('tickets').find(query).toArray(function (err, records) {
         if (err) {
@@ -27,7 +27,7 @@ router.post('/api/ticket', function (req, res, next) {
     var result = {};
     if (ticket == undefined ) {
         result.result = "fail";
-        result.message = "tickt is null";
+        result.message = "ticket is null";
     } else {
         ticket.state = "open";
         ticket.issuedate = new Date().toISOString();
@@ -44,18 +44,47 @@ router.post('/api/ticket', function (req, res, next) {
 });
 
 
-router.post('/api/register/event', function (req, res, next) {
-    var record = req.body;
+//
+// 작업
+//
+router.get('/api/task', function (req, res, next) {
+    var query = req.query;
     var result = {};
-    if (record == undefined ) {
-        result.result = "fail";
-        result.message = "record is null";
-    } else {
-        result.result = "ok";
-        db.get().collection('technical_support_team_events').insert(record);
-    }
-    res.json(result);
+    db.get().collection('tasks').find(query).toArray(function (err, records) {
+        if (err) {
+            console.error(err);
+            return;
+        } else {
+            result.result = "ok";
+            result.records = records;
+            res.json(result);
+        }
+    });
 });
+
+
+router.post('/api/task', function (req, res, next) {
+    var task = req.body;
+    var result = {};
+    if (task == undefined ) {
+        result.result = "fail";
+        result.message = "task is null";
+    } else {
+        task.state = "open";
+        task.issuedate = new Date().toISOString();
+        result.result = "ok";
+        db.get().collection('tasks').insert(task, function(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            result.id = task._id;
+            res.json(result);
+        });
+    }
+});
+
+
 
 
 router.post('/api/register/member', function (req, res, next) {
@@ -68,14 +97,6 @@ router.post('/api/register/member', function (req, res, next) {
         result.result = "ok";
         db.get().collection('members').insert(record);
     }
-    res.json(result);
-});
-
-
-router.post('/api/test', function (req, res, next) {
-    var record = req.body;
-    var result = JSON.parse('{  "SystemHeader" : {     "TMSG_WRTG_DT" : "20170314" ,      "INTF_ID"  : "IFTFOT0001"   } ,  "Data" : {    "ds_result1" : [      {"NAME":"test","AGE":41,"CHECK":"Y"}    ],    "ds_result2" : [      {"NAME":"test2","AGE":44444444,"CHECK":"Y"},      {"NAME":"test3","AGE":5555,"CHECK":"Y"},      {"NAME":"test4","AGE":21,"CHECK":"Y"},      {"NAME":"aaaaaaa","AGE":777777,"CHECK":"N"}    ]  }}');
-    console.log(record);
     res.json(result);
 });
 
